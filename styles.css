@@ -11,6 +11,6 @@
 .hero h1{font-size:clamp(48px,6.4vw,88px);letter-spacing:-3px;line-height:1.02;max-width:1000px}.hero h1 em{white-space:nowrap}@media(max-width:760px){.hero h1{font-size:clamp(37px,9vw,62px);letter-spacing:-1.5px}.hero h1 em{white-space:normal}}
 
 .partners{background:#191a16;padding:76px 10%;display:grid;grid-template-columns:.8fr 1.2fr;column-gap:8%;align-items:center}
-.partner-logos img{max-width:105px;height:30px}
+.partner-logos img{width:auto;max-width:105px;height:30px;object-fit:contain;flex:0 1 105px}
 .partners-note{grid-column:2;margin:18px 0 0;text-align:right;color:#9b9d94;font-size:11px}
-@media(max-width:760px){.partners{padding:64px 7%}.partner-logos{justify-content:flex-start;margin-top:34px;gap:25px}.partner-logos img{max-width:84px;height:25px}.partners-note{text-align:left;margin-top:18px}}
+@media(max-width:760px){.partners{padding:64px 7%}.partner-logos{justify-content:flex-start;margin-top:34px;gap:25px}.partner-logos img{max-width:84px;height:25px;flex-basis:84px}.partners-note{text-align:left;margin-top:18px}}
