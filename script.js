@@ -53,6 +53,7 @@ function renderProjects(items) {
       image.alt = project.coverAlt || `${project.title} portfolio image`;
       image.loading = index < 2 ? 'eager' : 'lazy';
       image.decoding = 'async';
+      image.onerror = () => image.remove();
       link.append(image);
     }
     if (project.video) {
@@ -142,6 +143,7 @@ async function loadPortfolio() {
     category: 'film',
     title: 'Point Productions — Film',
     type: 'Film',
+    cover: 'https://drive.google.com/thumbnail?id=1xjcpTbsKZn6GKUkIrAPHM9T9V_bLdL1Q&sz=w1600',
     video: 'https://drive.google.com/file/d/1xjcpTbsKZn6GKUkIrAPHM9T9V_bLdL1Q/view?usp=share_link'
   };
   renderProjects([driveFilm, ...groups.flat()]);
