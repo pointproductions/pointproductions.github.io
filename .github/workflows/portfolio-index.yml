@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'assets/portfolio/**'
+      - 'assets/partners/**'
       - '.github/workflows/portfolio-index.yml'
 
 permissions:
@@ -24,9 +25,12 @@ jobs:
             mkdir -p "$folder"
             python3 -c 'import pathlib,sys; p=pathlib.Path(sys.argv[1]); exts={".jpg",".jpeg",".png",".webp",".avif",".gif",".mp4",".webm"}; (p/"index.txt").write_text("".join(f.name+"\n" for f in sorted(p.iterdir()) if f.is_file() and f.suffix.lower() in exts))' "$folder"
           done
+          partner_folder="assets/partners"
+          mkdir -p "$partner_folder"
+          python3 -c 'import pathlib,sys; p=pathlib.Path(sys.argv[1]); exts={".svg",".png",".jpg",".jpeg",".webp"}; (p/"index.txt").write_text("".join(f.name+"\n" for f in sorted(p.iterdir()) if f.is_file() and f.suffix.lower() in exts))' "$partner_folder"
       - name: Commit indexes when changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/portfolio/*/index.txt
+          git add assets/portfolio/*/index.txt assets/partners/index.txt
           git diff --cached --quiet || (git commit -m "Update portfolio folder indexes" && git push)
